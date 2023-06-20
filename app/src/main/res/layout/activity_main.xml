@@ -32,6 +32,7 @@
 
     <Button
         android:id="@+id/button"
+        android:onClick="showToast"
         android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
