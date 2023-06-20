@@ -32,10 +32,10 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:text="login"
+        android:text="login/signin"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent" />
 
