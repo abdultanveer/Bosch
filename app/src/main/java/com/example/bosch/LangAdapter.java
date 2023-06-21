@@ -4,12 +4,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LangAdapter extends RecyclerView.Adapter<LangAdapter.LangViewHolder> {
     public static String TAG = LangAdapter.class.getSimpleName();
+    String[] languages;
+    public LangAdapter(String[] languagesJson) {
+        languages = languagesJson;
+    }
 
     @NonNull
     @Override
@@ -20,22 +25,26 @@ public class LangAdapter extends RecyclerView.Adapter<LangAdapter.LangViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LangViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LangViewHolder sahilHolder, int position) {
         Log.i(TAG,"Dharshini - writing on row plank");
+        sahilHolder.tvRowPlank.setText(languages[position]);
+
 
     }
 
     @Override
     public int getItemCount() {
-        Log.i(TAG,"sabhari - counting data items");
+        Log.i(TAG,"sabhari - counting data items"+languages.length);
 
-        return 0;
+        return languages.length;
     }
 
     class LangViewHolder extends RecyclerView.ViewHolder {
+        TextView tvRowPlank;
         public LangViewHolder(@NonNull View itemView) {
             super(itemView);
             Log.i(TAG,"sahil - reserve planks in the  view holder");
+            tvRowPlank = itemView.findViewById(R.id.tvRow);
 
         }
     }
