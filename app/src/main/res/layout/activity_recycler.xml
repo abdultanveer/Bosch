@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".RecyclerActivity">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/langList"
         android:entries="@array/countries"
         android:layout_width="match_parent"
