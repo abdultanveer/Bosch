@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.snackbar.Snackbar;
+
+public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
 EditText nameEt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,7 @@ EditText nameEt;
         //setContentView = inflating xml layout
         setContentView(R.layout.activity_main);
         nameEt = findViewById(R.id.etName);
+        nameEt.setOnFocusChangeListener(this);
     }
 
     public void showToast(View view) {
@@ -25,11 +28,25 @@ EditText nameEt;
        Intent hIntent = new Intent(MainActivity.this,HomeActivity.class);
        hIntent.putExtra("hkey",name);
         startActivity(hIntent);
+        throw new NullPointerException("some exception");
     }
 
     //https://developer.android.com/guide/components/intents-common#java
     public void openDialer(View view) {
         Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"));
         startActivity(dialIntent);
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean isFocussed) {
+        if(isFocussed){
+            Snackbar.make(findViewById(android.R.id.content), "focussed", Snackbar.LENGTH_SHORT).show();
+
+        }
+        else{
+            Snackbar.make(findViewById(android.R.id.content), "lost focus", Snackbar.LENGTH_SHORT).show();
+
+        }
+
     }
 }

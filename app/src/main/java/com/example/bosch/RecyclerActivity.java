@@ -97,34 +97,29 @@ public class RecyclerActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG,"im started-- visible");
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.i(TAG,"im resume - back to the foreground-- restore state");
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         Log.i(TAG,"im pause - background--store state");
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.i(TAG,"im stopping - cold storage--- relase resource");
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG,"im destroy - no more");
-
     }
 }
