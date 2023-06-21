@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,6 +40,8 @@ public class RecyclerActivity extends AppCompatActivity {
         Log.i(TAG,"im create");
         setContentView(R.layout.activity_recycler);   //R.layout -- my app
         langRecylerView = findViewById(R.id.langList);
+
+        registerForContextMenu(langRecylerView);
         langRecylerView.setLayoutManager(new LinearLayoutManager(this));
         LangAdapter adapter = new LangAdapter(languagesJson);
         langRecylerView.setAdapter(adapter);
@@ -64,6 +68,28 @@ public class RecyclerActivity extends AppCompatActivity {
 
                  break;
          }
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.recycler_menu,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+         super.onContextItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.settings:
+                Snackbar.make(findViewById(android.R.id.content), "settings", Snackbar.LENGTH_SHORT).show();
+
+                break;
+            case  R.id.logout:
+                Snackbar.make(findViewById(android.R.id.content), "logging out", Snackbar.LENGTH_SHORT).show();
+
+                break;
+        }
         return true;
     }
 
