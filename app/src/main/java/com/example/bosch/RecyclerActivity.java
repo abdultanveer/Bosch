@@ -20,5 +20,6 @@ public class RecyclerActivity extends AppCompatActivity {
                android.R.layout.simple_list_item_1, //R.layout -- android os
                 languagesJson );
         langListView.setAdapter(adapter);*/
+
     }
 }
