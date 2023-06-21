@@ -1,13 +1,20 @@
 package com.example.bosch;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class RecyclerActivity extends AppCompatActivity {
     String[] languagesJson = {"English","hindi","urdu","tamil",
@@ -34,6 +41,30 @@ public class RecyclerActivity extends AppCompatActivity {
         langRecylerView.setLayoutManager(new LinearLayoutManager(this));
         LangAdapter adapter = new LangAdapter(languagesJson);
         langRecylerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.recycler_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+         super.onOptionsItemSelected(item);
+         switch (item.getItemId()){
+             case R.id.settings:
+                 Snackbar.make(findViewById(android.R.id.content), "settings", Snackbar.LENGTH_SHORT).show();
+
+                 break;
+             case  R.id.logout:
+                 Snackbar.make(findViewById(android.R.id.content), "logging out", Snackbar.LENGTH_SHORT).show();
+
+                 break;
+         }
+        return true;
     }
 
     @Override
