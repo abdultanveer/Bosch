@@ -27,8 +27,17 @@ EditText nameEt;
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
        Intent hIntent = new Intent(MainActivity.this,HomeActivity.class);
        hIntent.putExtra("hkey",name);
-        startActivity(hIntent);
+        add(10,20);
+      //  startActivity(hIntent);
+    }
+
+    private void add(int i, int i1) {
+        int c = i1+i;
+       c = c*20;
+
         throw new NullPointerException("some exception");
+
+
     }
 
     //https://developer.android.com/guide/components/intents-common#java
