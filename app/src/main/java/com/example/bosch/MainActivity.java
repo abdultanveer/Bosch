@@ -3,6 +3,7 @@ package com.example.bosch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,53 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
 EditText nameEt;
+EditText pwdEt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView = inflating xml layout
         setContentView(R.layout.activity_main);
         nameEt = findViewById(R.id.etName);
+        pwdEt = findViewById(R.id.etPwd);
         nameEt.setOnFocusChangeListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveData();
+    }
+
+    private void saveData() {
+        //get the data from the edittexts
+        String name = nameEt.getText().toString();
+        String password = pwdEt.getText().toString();
+        //create a file -- sharedprefs
+        SharedPreferences preferences = getSharedPreferences("boschprefs",MODE_PRIVATE);
+        //open file in write mode
+        SharedPreferences.Editor editor = preferences.edit();
+        //write data to the file
+        editor.putString("nm",name);
+        editor.putString("pwd",password);
+        //save the file
+        editor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        restoreData();
+    }
+//data/data/ur.package.name/sharedprefs/boschprefs.xml
+    private void restoreData() {
+        //open the file
+        SharedPreferences preferences = getSharedPreferences("boschprefs",MODE_PRIVATE);
+        //read data from the file
+        String name = preferences.getString("nm","");
+        String password = preferences.getString("pwd","");
+        //put the data into edittexts
+        nameEt.setText(name);
+        pwdEt.setText(password);
     }
 
     public void showToast(View view) {
@@ -35,7 +76,7 @@ EditText nameEt;
         int c = i1+i;
        c = c*20;
 
-        throw new NullPointerException("some exception");
+        //throw new NullPointerException("some exception");
 
 
     }

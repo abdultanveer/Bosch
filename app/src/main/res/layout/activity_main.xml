@@ -16,20 +16,20 @@
         android:layout_marginBottom="261dp"
         android:ems="10"
         android:hint="@string/enter_name"
-        android:inputType="numberPassword"
+        android:inputType="textCapWords"
         app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/etPwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="119dp"
         android:ems="10"
         android:hint="@string/enter_pwd"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +52,7 @@
         android:onClick="openDialer"
         android:text="dialer"
         app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPwd" />
 
     <ImageButton
         android:id="@+id/imageButton"
